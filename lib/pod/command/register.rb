@@ -2,13 +2,13 @@ require 'pod/links'
 
 module Pod
   class Command
-    class Link < Command
-      self.summary = 'Create pod links for local pod development'
+    class Register < Command
+      self.summary = 'Register pod for local pod development'
       self.description = <<-DESC
         The link functionality allows developers to easily test their pods.
         Linking is a two-step process:
 
-        Using 'pod link' in a project folder will create a global link.
+        Using 'pod register' in a project folder will create a global link.
         Then, in some other pod, 'pod link <name>' will create a link to 
         the local pod as a Development pod.
 
@@ -17,7 +17,7 @@ module Pod
       DESC
 
       self.arguments = [
-        CLAide::Argument.new('POD_NAME', true)
+        CLAide::Argument.new('POD_NAME', false)
       ]
 
       def initialize(argv)
@@ -26,10 +26,11 @@ module Pod
       end
 
       #
-      # We will link the pod into the current project as a development dependency
+      # We will register the pod as a local development pod.
+      # If the pod is not explicitly given, we will use the first podspec for registering.
       #
       def run 
-        Pod::Command::Links.link @pod
+        Pod::Command::Links.register @pod
       end
     end
   end
