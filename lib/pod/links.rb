@@ -23,10 +23,11 @@ module Pod
       # Register a pod for local development in the current working directory. This working
       # directory must have a .podspec defining the pod 
       # 
-      def self.register
-        self.print "Registering '#{self.podspec.name}' > #{Dir.pwd}"
+      def self.register(pod)
+        pod_name = pod || self.podspec.name
+        self.print "Registering '#{pod_name}' > #{Dir.pwd}"
         self.write_db(REGISTERED_DB, self.registerd_db, {
-          self.podspec.name => {
+          pod_name => {
             "path" => Dir.pwd
           }
         })
@@ -69,7 +70,7 @@ module Pod
         })
 
         # install pod from link
-        Pod::Command::Install.run(CLAide::ARGV.new ["--no-repo-update"])
+        Pod::Command::Install.run(["--no-repo-update"])
       end
 
       #
@@ -101,7 +102,7 @@ module Pod
           end
 
           # install pod from repo
-          Pod::Command::Install.run(CLAide::ARGV.new [])
+          Pod::Command::Install.run([])
         end
       end
 
