@@ -127,7 +127,6 @@ module Pod
               # key: CocoaLumberjack/Core or CocoaLumberjack/Extensions (= 1.9.2)
               key_desc = key.split(" (", 2)[0]
 
-              puts "DEBUG: " + key_desc
               inner_after_index = find_pod_index after, key_desc
               inner_before_index = find_pod_index before, key_desc
               
