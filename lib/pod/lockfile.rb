@@ -129,7 +129,9 @@ module Pod
 
               inner_after_index = find_pod_index after, key_desc
               inner_before_index = find_pod_index before, key_desc
-              
+              puts "KEY "+ key_desc
+              puts "before "+ inner_before_index.to_s
+              puts "after "+ inner_after_index.to_s
               unless inner_before_index.nil? || inner_after_index.nil?
                 after[inner_after_index] = before[inner_before_index]
               else 
