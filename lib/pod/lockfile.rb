@@ -131,6 +131,9 @@ module Pod
               inner_before_index = find_pod_index before, key_desc
               puts "KEY "+ key_desc
               puts "BEFORE_ARRAY "+ before.to_s 
+              puts "---------"
+              puts "AFTER ARRAY " + after.to_s
+              puts "---------"
               puts "before "+ inner_before_index.to_s
               puts "after "+ inner_after_index.to_s
               unless inner_before_index.nil? && inner_after_index.nil?
