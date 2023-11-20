@@ -131,7 +131,7 @@ module Pod
               inner_after_index = find_pod_index after, key_desc
               inner_before_index = find_pod_index before, key_desc
               
-              unless inner_before_index.nil? && inner_after_index.nil?
+              unless inner_before_index.nil? || inner_after_index.nil?
                 after[inner_after_index] = before[inner_before_index]
               else 
                 # if it was removed in the new deps
